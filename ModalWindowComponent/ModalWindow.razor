@@ -1,0 +1,56 @@
+﻿@inject ModalWindowService _service
+
+<div class="@Texts.ModalContainerClass @(IsVisible ? Texts.ModalActiveContainerClass : string.Empty)">
+    @Content
+</div>
+
+@code {
+    protected bool IsVisible { get; set; }
+    protected RenderFragment Content { get; set; }
+
+    protected override void OnInitialized()
+    {
+        _service.OnShow += ShowModal;
+        _service.OnClose += CloseModal;
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (IsVisible == false)
+        {
+            _service.ClosedCall().Wait();
+        }
+        else
+        {
+            _service.ShowedCall().Wait();
+        }
+    }
+
+    public Task ShowModal(RenderFragment content)
+    {
+        Content = content;
+        IsVisible = true;
+
+        return InvokeAsync(() =>
+        {
+            StateHasChanged();
+        });
+    }
+
+    public Task CloseModal()
+    {
+        IsVisible = false;
+        Content = null;
+
+        return InvokeAsync(() =>
+        {
+            StateHasChanged();
+        });
+    }
+
+    public void Dispose()
+    {
+        _service.OnShow -= ShowModal;
+        _service.OnClose -= CloseModal;
+    }
+}
