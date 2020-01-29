@@ -1,5 +1,5 @@
 {
-  "FilePath": "c:\\Users\\Alex\\source\\repos\\SZ\\ModalWindowComponent\\ModalWindowComponent.csproj",
+  "FilePath": "c:\\Users\\Alex\\source\\repos\\blazor_modal_windows\\ModalWindowComponent\\ModalWindowComponent.csproj",
   "Configuration": {
     "ConfigurationName": "Default",
     "LanguageVersion": "3.0",
@@ -16099,14 +16099,14 @@
   "RootNamespace": "ModalWindowComponent",
   "Documents": [
     {
-      "FilePath": "c:\\Users\\Alex\\source\\repos\\SZ\\ModalWindowComponent\\ModalWindow.razor",
-      "TargetPath": "ModalWindow.razor",
-      "FileKind": "component"
-    },
-    {
-      "FilePath": "c:\\Users\\Alex\\source\\repos\\SZ\\ModalWindowComponent\\_Imports.razor",
+      "FilePath": "c:\\Users\\Alex\\source\\repos\\blazor_modal_windows\\ModalWindowComponent\\_Imports.razor",
       "TargetPath": "_Imports.razor",
       "FileKind": "componentImport"
+    },
+    {
+      "FilePath": "c:\\Users\\Alex\\source\\repos\\blazor_modal_windows\\ModalWindowComponent\\ModalWindow.razor",
+      "TargetPath": "ModalWindow.razor",
+      "FileKind": "component"
     }
   ],
   "SerializationFormat": "0.2"
