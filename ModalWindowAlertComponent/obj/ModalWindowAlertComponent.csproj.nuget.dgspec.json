@@ -83,7 +83,7 @@
       "version": "1.0.0",
       "restore": {
         "projectUniqueName": "C:\\Users\\Alex\\source\\repos\\blazor_modal_windows\\ModalWindowComponent\\ModalWindowComponent.csproj",
-        "projectName": "ModalWindowComponent",
+        "projectName": "BlazorModalWindowComponent",
         "projectPath": "C:\\Users\\Alex\\source\\repos\\blazor_modal_windows\\ModalWindowComponent\\ModalWindowComponent.csproj",
         "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Alex\\source\\repos\\blazor_modal_windows\\ModalWindowComponent\\obj\\",

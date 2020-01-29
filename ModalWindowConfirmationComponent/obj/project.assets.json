@@ -272,7 +272,7 @@
           "lib/netstandard2.0/System.Threading.Tasks.Extensions.dll": {}
         }
       },
-      "ModalWindowComponent/1.0.0": {
+      "BlazorModalWindowComponent/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -280,10 +280,10 @@
           "Microsoft.AspNetCore.Components.Web": "3.1.1"
         },
         "compile": {
-          "bin/placeholder/ModalWindowComponent.dll": {}
+          "bin/placeholder/BlazorModalWindowComponent.dll": {}
         },
         "runtime": {
-          "bin/placeholder/ModalWindowComponent.dll": {}
+          "bin/placeholder/BlazorModalWindowComponent.dll": {}
         }
       }
     }
@@ -936,7 +936,7 @@
         "version.txt"
       ]
     },
-    "ModalWindowComponent/1.0.0": {
+    "BlazorModalWindowComponent/1.0.0": {
       "type": "project",
       "path": "../ModalWindowComponent/ModalWindowComponent.csproj",
       "msbuildProject": "../ModalWindowComponent/ModalWindowComponent.csproj"
@@ -944,10 +944,10 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
+      "BlazorModalWindowComponent >= 1.0.0",
       "C:\\Users\\Alex\\source\\repos\\blazor_modal_windows\\ModalWindowContainerComponent\\ModalWindowContainerComponent.csproj",
       "Microsoft.AspNetCore.Components >= 3.1.1",
       "Microsoft.AspNetCore.Components.Web >= 3.1.1",
-      "ModalWindowComponent >= 1.0.0",
       "NETStandard.Library >= 2.0.3"
     ]
   },

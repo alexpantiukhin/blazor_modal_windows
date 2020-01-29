@@ -11,12 +11,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("ModalWindowComponent")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("Pantiukhin Aleksandr, Chris Sainty")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
-[assembly: System.Reflection.AssemblyProductAttribute("ModalWindowComponent")]
-[assembly: System.Reflection.AssemblyTitleAttribute("ModalWindowComponent")]
+[assembly: System.Reflection.AssemblyProductAttribute("BlazorModalWindowComponent")]
+[assembly: System.Reflection.AssemblyTitleAttribute("BlazorModalWindowComponent")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Создано классом WriteCodeFragment MSBuild.
