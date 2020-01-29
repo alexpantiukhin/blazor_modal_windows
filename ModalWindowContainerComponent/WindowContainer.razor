@@ -1,0 +1,36 @@
+﻿<div class="@Texts.OverlayClass" @onclick="() => { if (CloseByClickOutside) Close(); }"></div>
+
+<div class="@Texts.ModalClass">
+    <div class="@Texts.HeaderClass">
+        @if (ShowTitle)
+        {
+            <h3 class="@Texts.TitleClass">@((MarkupString)Title)</h3>
+        }
+        <button type="button" class="@Texts.ButtonCloseClass" @onclick="Close">
+            <span>&times;</span>
+        </button>
+    </div>
+    <div class="@Texts.ContentClass">
+        @ChildContent
+    </div>
+</div>
+
+
+@code{
+    [Parameter]
+    public bool CloseByClickOutside { get; set; } = true;
+    [Parameter]
+    public EventCallback OnClose { get; set; }
+    [Parameter]
+    public string Title { get; set; }
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+    [Parameter]
+    public bool ShowTitle { get; set; } = true;
+
+
+    private Task Close()
+    {
+        return OnClose.InvokeAsync(null);
+    }
+}

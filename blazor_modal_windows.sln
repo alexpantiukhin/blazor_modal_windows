@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModalWindowAlertComponent",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModalWindowConfirmationComponent", "ModalWindowConfirmationComponent\ModalWindowConfirmationComponent.csproj", "{65A66521-68AE-47C3-8CFA-537CD214B25A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModalWindowContainerComponent", "..\SZ\ModalWindowContainerComponent\ModalWindowContainerComponent.csproj", "{41687E92-0DF5-4E5D-96B5-79A0F95EA236}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
