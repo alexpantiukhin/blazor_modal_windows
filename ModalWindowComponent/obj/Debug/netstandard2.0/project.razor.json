@@ -5,7 +5,10 @@
     "LanguageVersion": "3.0",
     "Extensions": []
   },
-  "ProjectWorkspaceState": null,
+  "ProjectWorkspaceState": {
+    "TagHelpers": [],
+    "CSharpLanguageVersion": 703
+  },
   "RootNamespace": "BlazorModalWindowComponent",
   "Documents": [
     {
