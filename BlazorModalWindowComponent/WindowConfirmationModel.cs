@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ModalWindowConfirmationComponent
+namespace BlazorModalWindowComponent
 {
     public class WindowConfirmationModel
     {

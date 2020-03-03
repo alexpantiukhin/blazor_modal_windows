@@ -1,8 +1,7 @@
-﻿using Microsoft.AspNetCore.Components;
-using System;
+﻿using System;
 using System.Threading.Tasks;
 
-namespace ModalWindowComponent
+namespace BlazorModalWindowComponent
 {
     /// <summary>
     /// Абстрактный класс для производных классов

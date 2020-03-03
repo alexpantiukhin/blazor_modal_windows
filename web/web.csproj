@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ModalWindowComponent\ModalWindowComponent.csproj" />
+    <ProjectReference Include="..\BlazorModalWindowComponent\BlazorModalWindowComponent.csproj" />
   </ItemGroup>
 
 </Project>

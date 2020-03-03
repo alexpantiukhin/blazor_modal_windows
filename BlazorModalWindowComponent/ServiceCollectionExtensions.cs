@@ -1,10 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-using ModalWindowAlertComponent;
-
-using ModalWindowConfirmationComponent;
-
-namespace ModalWindowComponent
+namespace BlazorModalWindowComponent
 {
     public static class ServiceCollectionExtensions
     {

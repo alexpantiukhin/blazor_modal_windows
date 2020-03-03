@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-using ModalWindowComponent;
+using BlazorModalWindowComponent;
 
 namespace web
 {
@@ -22,7 +22,7 @@ namespace web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddServerSideBlazor();
+            services.AddServerSideBlazor(x => x.DetailedErrors = true);
             services.AddBlazorModal();
             services.AddWindowAlert();
             services.AddWindowConfirmation();

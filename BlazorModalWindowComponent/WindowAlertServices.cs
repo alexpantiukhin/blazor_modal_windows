@@ -1,9 +1,7 @@
-﻿using ModalWindowComponent;
-
-using System;
+﻿using System;
 using System.Threading.Tasks;
 
-namespace ModalWindowAlertComponent
+namespace BlazorModalWindowComponent
 {
     public class WindowAlertServices : AbstractDerivedModalWindowService
     {

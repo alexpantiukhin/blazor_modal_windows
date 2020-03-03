@@ -1,6 +1,6 @@
-﻿@inject ModalWindowAlertComponent.WindowAlertServices _modalService
+﻿@inject WindowAlertServices _modalService
 
-<div class="@ModalWindowComponent.Texts.ModalContainerClass @(IsVisible ? ModalWindowComponent.Texts.ModalActiveContainerClass : string.Empty)">
+<div class="@Texts.ModalContainerClass @(IsVisible ? Texts.ModalActiveContainerClass : string.Empty)">
     <WindowContainer OnClose="() => _modalService.Close().Wait()"
                      Title="@Model?.Title"
                      ShowTitle="Model?.Title != null">

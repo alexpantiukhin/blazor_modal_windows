@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ModalWindowAlertComponent
+namespace BlazorModalWindowComponent
 {
     public class WindowAlertModel
     {
