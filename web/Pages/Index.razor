@@ -1,0 +1,26 @@
+﻿@page "/"
+
+@inject ModalWindowComponent.ModalWindowService _modal
+@inject ModalWindowConfirmationComponent.WindowConfirmationServices _confirm
+@inject ModalWindowAlertComponent.WindowAlertServices _alert
+
+<button @onclick="ModalCall">Modal</button>
+<button @onclick="AlertCall">Alert</button>
+<button @onclick="ConfirmCall">Confirm</button>
+
+@code {
+    void ModalCall()
+    {
+        _modal.Show<object, object>(typeof(ModalContenr), null, null);
+    }
+
+    void AlertCall()
+    {
+        _alert.Show(() => { var a = 1; }, "Message", "Title", "Хорошо");
+    }
+
+    void ConfirmCall()
+    {
+        _confirm.Show(() => { var a = 1; }, "Message", () => { var a = 2; }, "Title", "Хорошо", "Не хорошо");
+    }
+}

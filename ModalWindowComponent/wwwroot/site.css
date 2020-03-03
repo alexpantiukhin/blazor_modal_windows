@@ -1,0 +1,13 @@
+.bm-container {
+    display: none;
+    align-items: start;
+    justify-content: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+.bm-active {
+    display: flex;
+}
