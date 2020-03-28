@@ -1,6 +1,4 @@
-﻿using ModalWindowComponent;
-
-using System;
+﻿using System;
 using System.Threading.Tasks;
 
 namespace BlazorModalWindowComponent

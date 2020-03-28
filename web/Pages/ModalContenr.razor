@@ -1,0 +1,13 @@
+﻿@inject BlazorModalWindowComponent.ModalWindowService _modal
+
+<BlazorModalWindowComponent.WindowContainer OnClose="_modal.Close"
+                                            CloseByClickOutside="true">
+    sdfsdfsdfsdf
+</BlazorModalWindowComponent.WindowContainer>
+
+@code {
+    [Parameter]
+    public string Model { get; set; }
+    [Parameter]
+    public object EventModel { get; set; }
+}
