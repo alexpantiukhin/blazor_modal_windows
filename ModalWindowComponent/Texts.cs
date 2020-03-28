@@ -1,4 +1,4 @@
-﻿namespace ModalWindowComponent
+﻿namespace BlazorModalWindowComponent
 {
     public struct Texts
     {
