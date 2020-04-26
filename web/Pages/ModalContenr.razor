@@ -1,4 +1,6 @@
-﻿@inject BlazorModalWindowComponent.ModalWindowService _modal
+﻿@inherits BaseTestComponent
+
+@inject BlazorModalWindowComponent.ModalWindowService _modal
 
 <BlazorModalWindowComponent.WindowContainer OnClose="_modal.Close"
                                             CloseByClickOutside="true">

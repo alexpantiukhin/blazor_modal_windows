@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29521.150
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorModalWindowComponent", "BlazorModalWindowComponent\BlazorModalWindowComponent.csproj", "{F978B40C-D3D8-40AB-9D6B-21F174B7EC9B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "web", "web\web.csproj", "{E2BC7D28-5BDD-4859-9CDE-D5FEA93FF5D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "web", "web\web.csproj", "{E2BC7D28-5BDD-4859-9CDE-D5FEA93FF5D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

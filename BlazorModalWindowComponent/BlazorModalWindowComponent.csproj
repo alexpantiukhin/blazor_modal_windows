@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Razor">
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -6,25 +6,25 @@
     <AssemblyName>BlazorModalWindowComponent</AssemblyName>
     <RootNamespace>BlazorModalWindowComponent</RootNamespace>
     <Authors>Pantiukhin Aleksandr, Chris Sainty</Authors>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <Company />
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
     <PackageId>BlazorModalWindowComponent</PackageId>
   </PropertyGroup>
 
 
   <ItemGroup>
+    <PackageReference Include="BlazorClickOutsideComponent" Version="1.0.17" />
     <PackageReference Include="Microsoft.AspNetCore.Components" Version="3.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="3.1.2" />
   </ItemGroup>
 
 
   <ItemGroup>
-    <None Include="..\..\blazor_click_outside2\BlazorClickOutsideComponent\LICENSE">
+    <None Include="LICENSE.txt">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
   </ItemGroup>
-
 </Project>

@@ -18,7 +18,7 @@ namespace BlazorModalWindowComponent
         /// <param name="events">Модель событий</param>
         public Task Show<TModel, TEventModel>(Type contentType, TModel model, TEventModel events)
         {
-            if (contentType.BaseType != typeof(ComponentBase))
+            if (!HasBaseBlazorComponent(contentType))
             {
                 throw new ArgumentException($"{contentType.FullName} must be a Blazor Component");
             }
@@ -43,6 +43,23 @@ namespace BlazorModalWindowComponent
         public Task Show(RenderFragment content)
         {
             return OnShow?.Invoke(content);
+        }
+
+        private bool HasBaseBlazorComponent(Type type)
+        {
+            var typeName = "";
+            var objectTypeName = typeof(object).Name;
+            do
+            {
+                if (type == typeof(ComponentBase))
+                    return true;
+
+                type = type.BaseType;
+                typeName = type.Name;
+            }
+            while (typeName != objectTypeName);
+
+            return false;
         }
     }
 }
