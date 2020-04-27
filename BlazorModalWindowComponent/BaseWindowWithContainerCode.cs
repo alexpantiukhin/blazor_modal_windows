@@ -7,12 +7,8 @@ namespace BlazorModalWindowComponent
     public class BaseWindowWithContainerCode<TService, TModel> : BaseModalWindowCode
         where TService : AbstractDerivedModalWindowService<TModel>
     {
-        TService _modalService;
-
-        public BaseWindowWithContainerCode(TService service)
-        {
-            _modalService = service;
-        }
+        [Inject]
+        public TService _modalService { get; set; }
 
         [Parameter]
         public TModel Model { get; set; }

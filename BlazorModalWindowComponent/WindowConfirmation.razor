@@ -1,11 +1,9 @@
 ﻿@inherits BaseWindowWithContainerCode<WindowConfirmationServices, WindowConfirmationModel>
 
-@inject WindowConfirmationServices _modalService
-
 <BaseWindowWithContainerComponent ContainerClass="@ContainerClass"
                                   Service="_modalService"
                                   ShowTitle="ShowTitle"
-                                  Title="@Model.Title">
+                                  Title="@Model?.Title">
     <h4>
         @((MarkupString)(Model?.Message ?? Texts.DefaultConfirmMessage))
     </h4>
@@ -24,5 +22,10 @@
     {
         Model?.ActionFalse?.Invoke();
         _modalService.Close().Wait();
+    }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
     }
 }

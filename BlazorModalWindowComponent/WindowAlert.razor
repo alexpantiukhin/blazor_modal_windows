@@ -1,8 +1,6 @@
 ﻿@inherits BaseWindowWithContainerCode<WindowAlertServices, WindowAlertModel>
 
-@inject WindowAlertServices _modalService
-
-<BaseWindowWithContainerComponent Title="@Model.Title"
+<BaseWindowWithContainerComponent Title="@Model?.Title"
                                   ContainerClass="@ContainerClass"
                                   Service="_modalService"
                                   ShowTitle="ShowTitle"
