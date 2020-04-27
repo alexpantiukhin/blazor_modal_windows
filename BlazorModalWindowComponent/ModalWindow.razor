@@ -1,14 +1,13 @@
-﻿@inject ModalWindowService _service
+﻿@inherits BaseModalWindowCode
 
-<div class="@Texts.ModalContainerClass @(IsVisible ? Texts.ModalActiveContainerClass : string.Empty) @ContainerClass">
-    @Content
-</div>
+@inject ModalWindowService _service
+
+<BaseModalWindowContainerComponent IsVisible="IsVisible"
+                                   ContainerClass="@ContainerClass">
+    @ChildContent
+</BaseModalWindowContainerComponent>
 
 @code {
-    protected bool IsVisible { get; set; }
-    protected RenderFragment Content { get; set; }
-    private string ContainerClass { get; set; }
-
     protected override void OnInitialized()
     {
         _service.OnShow += ShowModal;
@@ -29,20 +28,9 @@
 
     public Task ShowModal(RenderFragment content, string containerClass)
     {
-        Content = content;
+        ChildContent = content;
         IsVisible = true;
         ContainerClass = containerClass;
-
-        return InvokeAsync(() =>
-        {
-            StateHasChanged();
-        });
-    }
-
-    public Task CloseModal()
-    {
-        IsVisible = false;
-        Content = null;
 
         return InvokeAsync(() =>
         {

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace BlazorModalWindowComponent
 {
-    public class ModalWindowService : AbstractDerivedModalWindowService
+    public class ModalWindowService : AbstractDerivedModalWindowService<object>
     {
         public event Func<RenderFragment, string, Task> OnShow;
 

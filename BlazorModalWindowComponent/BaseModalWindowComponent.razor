@@ -1,0 +1,14 @@
+﻿<div class="@Texts.ModalContainerClass @(IsVisible ? Texts.ModalActiveContainerClass : string.Empty) @ContainerClass">
+    @ChildContent
+</div>
+
+@code {
+    [Parameter]
+    public string ContainerClass { get; set; }
+    [Parameter]
+    public bool IsVisible { get; set; }
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+
+}

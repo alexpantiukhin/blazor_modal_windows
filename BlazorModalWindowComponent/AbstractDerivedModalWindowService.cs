@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BlazorModalWindowComponent.Interfaces;
+
+using System;
 using System.Threading.Tasks;
 
 namespace BlazorModalWindowComponent
@@ -6,8 +8,9 @@ namespace BlazorModalWindowComponent
     /// <summary>
     /// Абстрактный класс для производных классов
     /// </summary>
-    public abstract class AbstractDerivedModalWindowService
+    public abstract class AbstractDerivedModalWindowService <TModel>: IWindowService<TModel>
     {
+        public event Func<TModel, string, Task> OnShow;
         public event Func<Task> OnShowed;
         public event Func<Task> OnClosed;
         public event Func<Task> OnClose;
@@ -16,7 +19,6 @@ namespace BlazorModalWindowComponent
         {
             if (OnShowed != null)
                 await OnShowed?.Invoke();
-            //return OnShowed?.Invoke();
         }
         public async Task ClosedCall()
         {
@@ -27,8 +29,14 @@ namespace BlazorModalWindowComponent
         {
             if (OnClose != null)
                 await OnClose?.Invoke();
-            //return OnClose?.Invoke();
         }
+
+
+        protected Task CallOnShow(TModel model, string containerClass)
+        {
+            return OnShow?.Invoke(model, containerClass);
+        }
+
 
     }
 }

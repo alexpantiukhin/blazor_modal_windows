@@ -3,11 +3,9 @@ using System.Threading.Tasks;
 
 namespace BlazorModalWindowComponent
 {
-    public class WindowConfirmationServices : AbstractDerivedModalWindowService
+    public class WindowConfirmationServices : AbstractDerivedModalWindowService<WindowConfirmationModel>
     {
-        public event Func<WindowConfirmationModel, Task> OnShow;
-
-        public Task Show(Action actionTrue, string message = null, Action actionFalse = null, string title = null, string buttonTrueText = null, string buttonFalseText = null)
+        public Task Show(Action actionTrue, string message = null, Action actionFalse = null, string title = null, string buttonTrueText = null, string buttonFalseText = null, string containerClass = null)
         {
             var model = new WindowConfirmationModel
             {
@@ -19,7 +17,7 @@ namespace BlazorModalWindowComponent
                 Title = title
             };
 
-            return OnShow?.Invoke(model);
+            return CallOnShow(model, containerClass);
         }
     }
 }

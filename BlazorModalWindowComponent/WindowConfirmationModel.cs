@@ -1,8 +1,10 @@
-﻿using System;
+﻿using BlazorModalWindowComponent.Interfaces;
+
+using System;
 
 namespace BlazorModalWindowComponent
 {
-    public class WindowConfirmationModel
+    public class WindowConfirmationModel : IWindowWithContainerModel
     {
         public Action ActionTrue { get; set; }
         public Action ActionFalse { get; set; }

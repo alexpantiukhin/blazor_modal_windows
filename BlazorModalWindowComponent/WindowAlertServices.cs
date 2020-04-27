@@ -3,11 +3,9 @@ using System.Threading.Tasks;
 
 namespace BlazorModalWindowComponent
 {
-    public class WindowAlertServices : AbstractDerivedModalWindowService
+    public class WindowAlertServices : AbstractDerivedModalWindowService<WindowAlertModel>
     {
-        public event Func<WindowAlertModel, Task> OnShow;
-
-        public Task Show(Action actionOk, string message = null, string title = null, string buttonOkText = null)
+        public Task Show(Action actionOk, string message = null, string title = null, string buttonOkText = null, string containerClass = null)
         {
             var model = new WindowAlertModel
             {
@@ -17,18 +15,7 @@ namespace BlazorModalWindowComponent
                 Title = title
             };
 
-            return OnShow?.Invoke(model);
-            //if (OnShow != null)
-            //    await OnShow.Invoke();
+            return CallOnShow(model, containerClass);
         }
-
-        //public async Task Close()
-        //{
-        //    await _modalWindowService.Close();
-
-        //    //if (OnClose != null)
-        //    //    await OnClose.Invoke();
-        //}
-
     }
 }

@@ -1,0 +1,27 @@
+﻿@using BlazorModalWindowComponent.Interfaces
+
+@typeparam TModel
+
+@inherits BaseModalWindowCode
+
+
+<BaseModalWindowComponent IsVisible="IsVisible"
+                          ContainerClass="@ContainerClass">
+    <WindowContainer OnClose="() => Service.Close().Wait()"
+                     Title="@(string.IsNullOrWhiteSpace(Title) ? Texts.DefaultConfirmTitle : Title)"
+                     ShowTitle="ShowTitle">
+        @ChildContent
+    </WindowContainer>
+</BaseModalWindowComponent>
+
+@code {
+    [Parameter]
+    public IWindowService<TModel> Service { get; set; }
+
+    [Parameter]
+    public string Title { get; set; }
+
+    [Parameter]
+    public bool ShowTitle { get; set; }
+
+}

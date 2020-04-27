@@ -1,123 +1,22 @@
-﻿@inject WindowAlertServices _modalService
+﻿@inherits BaseWindowWithContainerCode<WindowAlertServices, WindowAlertModel>
 
-<div class="@Texts.ModalContainerClass @(IsVisible ? Texts.ModalActiveContainerClass : string.Empty)">
-    <WindowContainer OnClose="() => _modalService.Close().Wait()"
-                     Title="@Model?.Title"
-                     ShowTitle="Model?.Title != null">
-        <p>
-            @(Model?.Message)
-        </p>
-        <button class="btn btn-primary" @onclick="ClickOk">@(Model?.ButtonOkText ?? "Ok")</button>
-    </WindowContainer>
-</div>
+@inject WindowAlertServices _modalService
+
+<BaseWindowWithContainerComponent Title="@Model.Title"
+                                  ContainerClass="@ContainerClass"
+                                  Service="_modalService"
+                                  ShowTitle="ShowTitle"
+                                  TModel="WindowAlertModel">
+    <p>
+        @(Model?.Message)
+    </p>
+    <button class="btn btn-primary" @onclick="ClickOk">@(Model?.ButtonOkText ?? "Ok")</button>
+</BaseWindowWithContainerComponent>
 
 @code {
-    [Parameter]
-    public WindowAlertModel Model { get; set; }
-
-    protected bool IsVisible { get; set; }
-    protected RenderFragment Content { get; set; }
-
-    protected override void OnInitialized()
-    {
-        _modalService.OnShow += ShowModal;
-        _modalService.OnClose += CloseModal;
-    }
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (IsVisible == false)
-        {
-            await _modalService.ClosedCall();
-        }
-        else
-        {
-            await _modalService.ShowedCall();
-        }
-    }
-
-    public Task ShowModal(WindowAlertModel model)
-    {
-        Model = model;
-        IsVisible = true;
-
-        return InvokeAsync(() =>
-        {
-            StateHasChanged();
-        });
-    }
-
-    public Task CloseModal()
-    {
-        IsVisible = false;
-        Content = null;
-
-        return InvokeAsync(() =>
-        {
-            StateHasChanged();
-        });
-    }
-
-    public void Dispose()
-    {
-        _modalService.OnShow -= ShowModal;
-        _modalService.OnClose -= CloseModal;
-    }
-
     void ClickOk()
     {
         Model.ActionOk?.Invoke();
         _modalService.Close().Wait();
     }
 }
-
-
-
-@*<WindowContainer OnClose="() => _modalService.Close().Wait()"
-                     Title="@(Model?.Title ?? Texts.DefaultConfirmTitle)">
-        <h4>
-            @((MarkupString)(Model?.Message ?? Texts.DefaultConfirmMessage))
-        </h4>
-        <button class="btn btn-outline-primary @Texts.BtnFalseClass" @onclick="ClickFalse">@((MarkupString)(Model?.ButtonFalseText ?? Texts.DefaultBtnFalseText))</button>
-        <button class="btn btn-primary float-sm-right @Texts.BtnTrueClass" @onclick="ClickTrue">@((MarkupString)(Model?.ButtonTrueText ?? Texts.DefaultBtnTrueText))</button>
-    </WindowContainer>
-
-    @code {
-        [Parameter]
-        public WindowConfirmationModel Model { get; set; }
-
-        void ClickTrue()
-        {
-            Model.ActionTrue?.Invoke();
-            _modalService.Close().Wait();
-        }
-
-        void ClickFalse()
-        {
-            Model?.ActionFalse?.Invoke();
-            _modalService.Close().Wait();
-        }
-    }*@
-
-
-@*@inject ModalWindowAlertComponent.WindowAlertServices _modalService
-
-<WindowContainer OnClose="() => _modalService.Close().Wait()"
-                 Title="@Model?.Title"
-                 ShowTitle="Model?.Title != null">
-    <p>
-        @(Model?.Message)
-    </p>
-    <button class="btn btn-primary" @onclick="ClickOk">@(Model?.ButtonOkText ?? "Ok")</button>
-</WindowContainer>
-
-@code {
-    [Parameter]
-    public WindowAlertModel Model { get; set; }
-
-    void ClickOk()
-    {
-        Model.ActionOk?.Invoke();
-        _modalService.Close().Wait();
-    }
-}*@
