@@ -27,9 +27,7 @@ namespace BlazorModalWindowComponent
 
                 x.AddContent(2, childContent ?? ChildContent);
                 x.CloseElement();
-
             };
-            //return@< div class="@Texts.ModalContainerClass @(IsVisible ? Texts.ModalActiveContainerClass : string.Empty) @ContainerClass">@ChildContent</div>;
         }
 
         public Task CloseModal()
