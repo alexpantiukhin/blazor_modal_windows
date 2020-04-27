@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace BlazorModalWindowComponent
 {
-    public class BaseWindowWithContainerCode<TService, TModel> : BaseModalWindow
+    public class BaseWindowWithContainer<TService, TModel> : BaseModalWindow
         where TService : AbstractDerivedModalWindowService<TModel>
         where TModel : IWindowWithContainerModel
     {
@@ -60,7 +60,7 @@ namespace BlazorModalWindowComponent
                     x.AddAttribute(1, nameof(WindowContainer.OnClose), EventCallback.Factory.Create(this, () => _modalService.Close()));
                     x.AddAttribute(2, nameof(WindowContainer.Title), string.IsNullOrWhiteSpace(Title) ? Texts.DefaultConfirmTitle : Title);
                     x.AddAttribute(3, nameof(WindowContainer.ShowTitle), ShowTitle);
-                    x.AddContent(4, childContent ?? ChildContent);
+                    x.AddAttribute(4, nameof(WindowContainer.ChildContent), childContent ?? ChildContent);
                 x.CloseComponent();
             };
             return base.Content(a);

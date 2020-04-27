@@ -1,4 +1,4 @@
-﻿@inherits BaseWindowWithContainerCode<WindowAlertServices, WindowAlertModel>
+﻿@inherits BaseWindowWithContainer<WindowAlertServices, WindowAlertModel>
 
 @Content()
 
@@ -20,7 +20,7 @@
             x.OpenElement(2, "button");
             x.AddAttribute(3, "class", "btn btn-primary");
 
-            x.AddAttribute(4, "@onclick", EventCallback.Factory.Create(this, ClickOk));
+            x.AddAttribute(4, "onclick", EventCallback.Factory.Create(this, ClickOk));
             x.AddContent(5, Model?.ButtonOkText ?? "Ok");
             x.CloseElement();
 
