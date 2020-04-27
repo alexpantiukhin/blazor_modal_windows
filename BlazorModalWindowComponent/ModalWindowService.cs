@@ -7,7 +7,7 @@ namespace BlazorModalWindowComponent
 {
     public class ModalWindowService : AbstractDerivedModalWindowService
     {
-        public event Func<RenderFragment, Task> OnShow;
+        public event Func<RenderFragment, string, Task> OnShow;
 
         /// <summary>
         /// В типе контента необходимо поле Model для получения модели
@@ -16,7 +16,7 @@ namespace BlazorModalWindowComponent
         /// <param name="contentType"></param>
         /// <param name="model">Модель данных</param>
         /// <param name="events">Модель событий</param>
-        public Task Show<TModel, TEventModel>(Type contentType, TModel model, TEventModel events)
+        public Task Show<TModel, TEventModel>(Type contentType, TModel model, TEventModel events, string containerClass)
         {
             if (!HasBaseBlazorComponent(contentType))
             {
@@ -25,7 +25,7 @@ namespace BlazorModalWindowComponent
 
             var content = new RenderFragment(x => { x.OpenComponent(1, contentType); x.AddAttribute(1, "Model", model); x.AddAttribute(2, "EventModel", events); x.CloseComponent(); });
 
-            return Show(content);
+            return Show(content, containerClass);
         }
 
         //public Task Show<TModel>(Type contentType, TModel model)
@@ -40,9 +40,9 @@ namespace BlazorModalWindowComponent
         //    return Show(content);
         //}
 
-        public Task Show(RenderFragment content)
+        public Task Show(RenderFragment content, string containerClass)
         {
-            return OnShow?.Invoke(content);
+            return OnShow?.Invoke(content, containerClass);
         }
 
         private bool HasBaseBlazorComponent(Type type)

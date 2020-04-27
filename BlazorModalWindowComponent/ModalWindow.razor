@@ -1,12 +1,13 @@
 ﻿@inject ModalWindowService _service
 
-<div class="@Texts.ModalContainerClass @(IsVisible ? Texts.ModalActiveContainerClass : string.Empty)">
+<div class="@Texts.ModalContainerClass @(IsVisible ? Texts.ModalActiveContainerClass : string.Empty) @ContainerClass">
     @Content
 </div>
 
 @code {
     protected bool IsVisible { get; set; }
     protected RenderFragment Content { get; set; }
+    private string ContainerClass { get; set; }
 
     protected override void OnInitialized()
     {
@@ -26,10 +27,11 @@
         }
     }
 
-    public Task ShowModal(RenderFragment content)
+    public Task ShowModal(RenderFragment content, string containerClass)
     {
         Content = content;
         IsVisible = true;
+        ContainerClass = containerClass;
 
         return InvokeAsync(() =>
         {
