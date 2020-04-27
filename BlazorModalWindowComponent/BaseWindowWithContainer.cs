@@ -16,9 +16,6 @@ namespace BlazorModalWindowComponent
         public TModel Model { get; set; }
 
         [Parameter]
-        public string Title { get; set; }
-
-        [Parameter]
         public bool ShowTitle { get; set; }
         protected override void OnInitialized()
         {
@@ -58,8 +55,8 @@ namespace BlazorModalWindowComponent
             {
                 x.OpenComponent<WindowContainer>(0);
                     x.AddAttribute(1, nameof(WindowContainer.OnClose), EventCallback.Factory.Create(this, () => _modalService.Close()));
-                    x.AddAttribute(2, nameof(WindowContainer.Title), string.IsNullOrWhiteSpace(Title) ? Texts.DefaultConfirmTitle : Title);
-                    x.AddAttribute(3, nameof(WindowContainer.ShowTitle), ShowTitle);
+                    x.AddAttribute(2, nameof(WindowContainer.Title), string.IsNullOrWhiteSpace(Model?.Title) ? Texts.DefaultConfirmTitle : Model?.Title);
+                    x.AddAttribute(3, nameof(WindowContainer.ShowTitle), !string.IsNullOrWhiteSpace(Model?.Title));
                     x.AddAttribute(4, nameof(WindowContainer.ChildContent), childContent ?? ChildContent);
                 x.CloseComponent();
             };
