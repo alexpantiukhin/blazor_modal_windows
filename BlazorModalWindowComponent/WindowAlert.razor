@@ -14,7 +14,7 @@
         RenderFragment a = x =>
         {
             x.OpenElement(0, "p");
-            x.AddContent(1, Model?.Message);
+            x.AddContent(1, (MarkupString)Model?.Message);
             x.CloseElement();
 
             x.OpenElement(2, "button");

@@ -1,12 +1,12 @@
 ﻿@page "/"
 
 @inject ModalWindowService _modal
-@*@inject WindowConfirmationServices _confirm*@
+@inject WindowConfirmationServices _confirm
 @inject WindowAlertServices _alert
 
 <button @onclick="ModalCall">Modal</button>
 <button @onclick="AlertCall">Alert</button>
-@*<button @onclick="ConfirmCall">Confirm</button>*@
+<button @onclick="ConfirmCall">Confirm</button>
 
 @code {
     void ModalCall()
@@ -16,11 +16,20 @@
 
     void AlertCall()
     {
-        _alert.Show(() => { var a = 1; }, "Message", "Title1", "Хорошо");
+        _alert.Show(() =>
+        {
+            var a = 1;
+        }, "Message", "Title1", "Хорошо");
     }
 
-    //void ConfirmCall()
-    //{
-    //    _confirm.Show(() => { var a = 1; }, "Message", () => { var a = 2; }, "Title", "Хорошо", "Не хорошо");
-    //}
+    void ConfirmCall()
+    {
+        _confirm.Show(() =>
+        {
+            var a = 1;
+        }, "Message", () =>
+        {
+            var a = 2;
+        }, "Title", "Хорошо", "Не хорошо");
+    }
 }

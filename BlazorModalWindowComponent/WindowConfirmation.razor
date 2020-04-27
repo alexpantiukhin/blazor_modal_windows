@@ -1,31 +1,42 @@
 ﻿@inherits BaseWindowWithContainer<WindowConfirmationServices, WindowConfirmationModel>
 
-<BaseWindowWithContainerComponent ContainerClass="@ContainerClass"
-                                  Service="_modalService"
-                                  ShowTitle="ShowTitle"
-                                  Title="@Model?.Title">
-    <h4>
-        @((MarkupString)(Model?.Message ?? Texts.DefaultConfirmMessage))
-    </h4>
-    <button class="btn btn-outline-primary @Texts.BtnFalseClass" @onclick="ClickFalse">@((MarkupString)(Model?.ButtonFalseText ?? Texts.DefaultBtnFalseText))</button>
-    <button class="btn btn-primary float-sm-right @Texts.BtnTrueClass" @onclick="ClickTrue">@((MarkupString)(Model?.ButtonTrueText ?? Texts.DefaultBtnTrueText))</button>
-</BaseWindowWithContainerComponent>
+@Content()
 
 @code {
-    void ClickTrue()
+    async void ClickTrue()
     {
         Model.ActionTrue?.Invoke();
-        _modalService.Close().Wait();
+        await _modalService.Close();
     }
 
-    void ClickFalse()
+    async void ClickFalse()
     {
         Model?.ActionFalse?.Invoke();
-        _modalService.Close().Wait();
+        await _modalService.Close();
     }
 
-    protected override void OnInitialized()
+    protected override RenderFragment Content(RenderFragment childContent = null)
     {
-        base.OnInitialized();
+        RenderFragment a = x =>
+        {
+            x.OpenElement(0, "h4");
+            x.AddContent(1, (MarkupString)(Model?.Message ?? Texts.DefaultConfirmMessage));
+            x.CloseElement();
+
+            x.OpenElement(2, "button");
+            x.AddAttribute(3, "class", "btn btn-outline-primary " + Texts.BtnFalseClass);
+            x.AddAttribute(4, "onclick", EventCallback.Factory.Create(this, ClickFalse));
+            x.AddContent(5, (MarkupString)(Model?.ButtonFalseText ?? Texts.DefaultBtnFalseText));
+            x.CloseElement();
+
+            x.OpenElement(6, "button");
+            x.AddAttribute(7, "class", "btn btn-primary float-sm-right " + Texts.BtnTrueClass);
+            x.AddAttribute(8, "onclick", EventCallback.Factory.Create(this, ClickTrue));
+            x.AddContent(9, (MarkupString)(Model?.ButtonTrueText ?? Texts.DefaultBtnTrueText));
+            x.CloseElement();
+
+        };
+
+        return base.Content(a);
     }
 }

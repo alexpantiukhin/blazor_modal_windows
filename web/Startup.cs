@@ -25,7 +25,7 @@ namespace web
             services.AddServerSideBlazor(x => x.DetailedErrors = true);
             services.AddBlazorModal();
             services.AddWindowAlert();
-            //services.AddWindowConfirmation();
+            services.AddWindowConfirmation();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
