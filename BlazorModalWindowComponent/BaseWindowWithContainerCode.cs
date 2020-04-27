@@ -1,11 +1,13 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using BlazorModalWindowComponent.Interfaces;
+using Microsoft.AspNetCore.Components;
 
 using System.Threading.Tasks;
 
 namespace BlazorModalWindowComponent
 {
-    public class BaseWindowWithContainerCode<TService, TModel> : BaseModalWindowCode
+    public class BaseWindowWithContainerCode<TService, TModel> : BaseModalWindow
         where TService : AbstractDerivedModalWindowService<TModel>
+        where TModel : IWindowWithContainerModel
     {
         [Inject]
         public TService _modalService { get; set; }
@@ -45,15 +47,23 @@ namespace BlazorModalWindowComponent
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if (IsVisible == false)
-            {
                 await _modalService.ClosedCall();
-            }
             else
-            {
                 await _modalService.ShowedCall();
-            }
         }
 
-
+        protected override RenderFragment Content(RenderFragment childContent = null)
+        {
+            RenderFragment a = x =>
+            {
+                x.OpenComponent<WindowContainer>(0);
+                    x.AddAttribute(1, nameof(WindowContainer.OnClose), EventCallback.Factory.Create(this, () => _modalService.Close()));
+                    x.AddAttribute(2, nameof(WindowContainer.Title), string.IsNullOrWhiteSpace(Title) ? Texts.DefaultConfirmTitle : Title);
+                    x.AddAttribute(3, nameof(WindowContainer.ShowTitle), ShowTitle);
+                    x.AddContent(4, childContent ?? ChildContent);
+                x.CloseComponent();
+            };
+            return base.Content(a);
+        }
     }
 }

@@ -1,11 +1,8 @@
-﻿@inherits BaseModalWindowCode
+﻿@inherits BaseModalWindow
 
 @inject ModalWindowService _service
 
-<BaseModalWindowContainerComponent IsVisible="IsVisible"
-                                   ContainerClass="@ContainerClass">
-    @ChildContent
-</BaseModalWindowContainerComponent>
+@Content()
 
 @code {
     protected override void OnInitialized()
@@ -17,13 +14,9 @@
     protected override void OnAfterRender(bool firstRender)
     {
         if (IsVisible == false)
-        {
             _service.ClosedCall().Wait();
-        }
         else
-        {
             _service.ShowedCall().Wait();
-        }
     }
 
     public Task ShowModal(RenderFragment content, string containerClass)

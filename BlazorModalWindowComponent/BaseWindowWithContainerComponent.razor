@@ -2,17 +2,14 @@
 
 @typeparam TModel
 
-@inherits BaseModalWindowCode
+@inherits BaseModalWindow
 
 
-<BaseModalWindowComponent IsVisible="IsVisible"
-                          ContainerClass="@ContainerClass">
-    <WindowContainer OnClose="() => Service.Close().Wait()"
-                     Title="@(string.IsNullOrWhiteSpace(Title) ? Texts.DefaultConfirmTitle : Title)"
-                     ShowTitle="ShowTitle">
-        @ChildContent
-    </WindowContainer>
-</BaseModalWindowComponent>
+<WindowContainer OnClose="Service.Close"
+                 Title="@(string.IsNullOrWhiteSpace(Title) ? Texts.DefaultConfirmTitle : Title)"
+                 ShowTitle="ShowTitle">
+    @ChildContent
+</WindowContainer>
 
 @code {
     [Parameter]

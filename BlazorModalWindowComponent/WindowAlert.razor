@@ -1,20 +1,31 @@
 ﻿@inherits BaseWindowWithContainerCode<WindowAlertServices, WindowAlertModel>
 
-<BaseWindowWithContainerComponent Title="@Model?.Title"
-                                  ContainerClass="@ContainerClass"
-                                  Service="_modalService"
-                                  ShowTitle="ShowTitle"
-                                  TModel="WindowAlertModel">
-    <p>
-        @(Model?.Message)
-    </p>
-    <button class="btn btn-primary" @onclick="ClickOk">@(Model?.ButtonOkText ?? "Ok")</button>
-</BaseWindowWithContainerComponent>
+@Content()
 
 @code {
     void ClickOk()
     {
         Model.ActionOk?.Invoke();
         _modalService.Close().Wait();
+    }
+
+    protected override RenderFragment Content(RenderFragment childContent = null)
+    {
+        RenderFragment a = x =>
+        {
+            x.OpenElement(0, "p");
+            x.AddContent(1, Model?.Message);
+            x.CloseElement();
+
+            x.OpenElement(2, "button");
+            x.AddAttribute(3, "class", "btn btn-primary");
+
+            x.AddAttribute(4, "@onclick", EventCallback.Factory.Create(this, ClickOk));
+            x.AddContent(5, Model?.ButtonOkText ?? "Ok");
+            x.CloseElement();
+
+        };
+
+        return base.Content(a);
     }
 }
