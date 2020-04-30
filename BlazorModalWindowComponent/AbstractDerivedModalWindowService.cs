@@ -8,7 +8,7 @@ namespace BlazorModalWindowComponent
     /// <summary>
     /// Абстрактный класс для производных классов
     /// </summary>
-    public abstract class AbstractDerivedModalWindowService <TModel>: IWindowService<TModel>
+    public abstract class AbstractDerivedModalWindowService<TModel> : IWindowService<TModel>
     {
         public event Func<TModel, string, Task> OnShow;
         public event Func<Task> OnShowed;
@@ -32,9 +32,10 @@ namespace BlazorModalWindowComponent
         }
 
 
-        protected Task CallOnShow(TModel model, string containerClass)
+        protected async Task CallOnShow(TModel model, string containerClass)
         {
-            return OnShow?.Invoke(model, containerClass);
+            if (OnShow != null)
+                await OnShow.Invoke(model, containerClass);
         }
 
 
