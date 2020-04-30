@@ -40,9 +40,10 @@ namespace BlazorModalWindowComponent
         //    return Show(content);
         //}
 
-        public Task Show(RenderFragment content, string containerClass)
+        public async Task Show(RenderFragment content, string containerClass)
         {
-            return OnShow?.Invoke(content, containerClass);
+            if (OnShow != null)
+                await OnShow.Invoke(content, containerClass);
         }
 
         private bool HasBaseBlazorComponent(Type type)
