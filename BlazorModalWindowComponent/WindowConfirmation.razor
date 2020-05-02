@@ -3,15 +3,19 @@
 @Content()
 
 @code {
-    async void ClickTrue()
+    async Task ClickTrue()
     {
-        Model.ActionTrue?.Invoke();
+        if (Model.ActionTrue != null)
+            await Model.ActionTrue.Invoke();
+
         await _modalService.Close();
     }
 
-    async void ClickFalse()
+    async Task ClickFalse()
     {
-        Model?.ActionFalse?.Invoke();
+        if (Model.ActionFalse != null)
+            Model?.ActionFalse.Invoke();
+
         await _modalService.Close();
     }
 

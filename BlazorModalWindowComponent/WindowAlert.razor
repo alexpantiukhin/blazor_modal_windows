@@ -3,10 +3,12 @@
 @Content()
 
 @code {
-    void ClickOk()
+    async Task ClickOk()
     {
-        Model.ActionOk?.Invoke();
-        _modalService.Close().Wait();
+        if (Model.ActionOk != null)
+            await Model.ActionOk.Invoke();
+
+        await _modalService.Close();
     }
 
     protected override RenderFragment Content(RenderFragment childContent = null)

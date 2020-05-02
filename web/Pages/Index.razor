@@ -9,25 +9,25 @@
 <button @onclick="ConfirmCall">Confirm</button>
 
 @code {
-    void ModalCall()
+    Task ModalCall()
     {
-        _modal.Show<string, object>(typeof(ModalContenr), "", null, "custom-container-class");
+        return _modal.Show<string, object>(typeof(ModalContenr), "", null, "custom-container-class");
     }
 
-    void AlertCall()
+    Task AlertCall()
     {
-        _alert.Show(() =>
+        return _alert.Show(async () =>
         {
             var a = 1;
         }, "Message", "Title1", "Хорошо");
     }
 
-    void ConfirmCall()
+    Task ConfirmCall()
     {
-        _confirm.Show(() =>
+        return _confirm.Show(async () =>
         {
             var a = 1;
-        }, "Message", () =>
+        }, "Message", async () =>
         {
             var a = 2;
         }, "Title", "Хорошо", "Не хорошо");
