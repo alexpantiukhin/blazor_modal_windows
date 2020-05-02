@@ -11,12 +11,12 @@
         _service.OnClose += CloseModal;
     }
 
-    protected override void OnAfterRender(bool firstRender)
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (IsVisible == false)
-            _service.ClosedCall().Wait();
+            await _service.ClosedCall();
         else
-            _service.ShowedCall().Wait();
+            await _service.ShowedCall();
     }
 
     public Task ShowModal(RenderFragment content, string containerClass)
