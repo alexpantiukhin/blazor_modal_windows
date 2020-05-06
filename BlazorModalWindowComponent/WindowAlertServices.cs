@@ -5,7 +5,7 @@ namespace BlazorModalWindowComponent
 {
     public class WindowAlertServices : AbstractDerivedModalWindowService<WindowAlertModel>
     {
-        public Task Show(Action actionOk, string message = null, string title = null, string buttonOkText = null, string containerClass = null)
+        public Task Show(Func<Task> actionOk, string message = null, string title = null, string buttonOkText = null, string containerClass = null)
         {
             var model = new WindowAlertModel
             {

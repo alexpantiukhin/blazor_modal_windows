@@ -1,13 +1,14 @@
 ﻿using BlazorModalWindowComponent.Interfaces;
 
 using System;
+using System.Threading.Tasks;
 
 namespace BlazorModalWindowComponent
 {
     public class WindowConfirmationModel : IWindowWithContainerModel
     {
-        public Action ActionTrue { get; set; }
-        public Action ActionFalse { get; set; }
+        public Func<Task> ActionTrue { get; set; }
+        public Func<Task> ActionFalse { get; set; }
         public string Title { get; set; }
         public string Message { get; set; }
         public string ButtonTrueText { get; set; }

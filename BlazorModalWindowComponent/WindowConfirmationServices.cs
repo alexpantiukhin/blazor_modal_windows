@@ -5,7 +5,7 @@ namespace BlazorModalWindowComponent
 {
     public class WindowConfirmationServices : AbstractDerivedModalWindowService<WindowConfirmationModel>
     {
-        public Task Show(Action actionTrue, string message = null, Action actionFalse = null, string title = null, string buttonTrueText = null, string buttonFalseText = null, string containerClass = null)
+        public Task Show(Func<Task> actionTrue, string message = null, Func<Task> actionFalse = null, string title = null, string buttonTrueText = null, string buttonFalseText = null, string containerClass = null)
         {
             var model = new WindowConfirmationModel
             {
