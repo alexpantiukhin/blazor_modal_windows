@@ -1,6 +1,6 @@
 ﻿<div class="@Texts.OverlayClass" @onclick="() => { if (CloseByClickOutside) Close(); }"></div>
 
-<div class="@Texts.ModalClass">
+<div class="@Texts.ModalClass @Class">
     <div class="@Texts.HeaderClass">
         @if (ShowTitle)
         {
@@ -27,6 +27,8 @@
     public RenderFragment ChildContent { get; set; }
     [Parameter]
     public bool ShowTitle { get; set; } = true;
+    [Parameter]
+    public string Class { get; set; }
 
 
     private Task Close()
